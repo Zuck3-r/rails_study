@@ -39,12 +39,12 @@ class Admin::UsersController < ApplicationController
   def destroy
     @user = User.find(params[:id])
     @user.destroy
-    redirect_to admin_user_url, notice: "ユーザー「#{@user.name}」を削除しました"
+    redirect_to admin_users_url, notice: "ユーザー「#{@user.name}」を削除しました"
   end
   
   private
   
   def user_params
-    params.requrie(:user).permit(:name, :email, :admin, :password, :password_confirmation)
+    params.require(:user).permit(:name, :email, :admin, :password, :password_confirmation)
   end
 end
